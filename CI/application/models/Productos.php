@@ -18,5 +18,8 @@ class Productos extends CI_Model {
 		return $query->result();
 	}
 	
-	
+	public function getDetalles($id){
+		$query = $this->db->get_where('productos', array('Id' => $id));
+		return $query->result();
+	}
 }

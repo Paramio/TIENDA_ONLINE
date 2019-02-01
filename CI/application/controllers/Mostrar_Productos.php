@@ -26,4 +26,15 @@ class Mostrar_Productos extends CI_Controller {
 		else
 		$this->load->view("error");
 	}
+
+	public function getDetallesProducto($id)
+	{	
+		$productos_categoria=$this->Productos->getDetalles($id);
+
+	
+			$this->load->view("detalles",[
+				'productos'=>$this->Productos->getDetalles($id)
+			]);
+	
+	}
 }

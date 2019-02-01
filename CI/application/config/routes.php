@@ -53,4 +53,6 @@ $route['default_controller'] = 'Mostrar_Productos';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['categoria/(:num)'] = 'Mostrar_Productos/getProductosPorCategoria/$1';
+$route['producto/(:num)'] = 'Mostrar_Productos/getDetallesProducto/$1';
+
 
