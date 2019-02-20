@@ -14,12 +14,22 @@ class Productos extends CI_Model {
 	}
 
 	public function get_Productos_Por_Categorias($id){
-		$query = $this->db->get_where('productos', array('Categorias_Id' => $id, 'Visible' => 1));
+		$query = $this->db->get_where('productos', array('Categoria_Id' => $id, 'Visible' => 1));
 		return $query->result();
 	}
 	
 	public function getDetalles($id){
 		$query = $this->db->get_where('productos', array('Id' => $id));
+		return $query->result();
+	}
+
+	public function getPaginateDestacados($limit,$offset){
+		$query = $this->db->get_where('productos', array('Destacado' => 1, 'Visible' => 1),$limit,$offset);
+		return $query->result();
+	}
+
+	public function getPaginatePorCategorias($id,$limit,$offset){
+		$query = $this->db->get_where('productos', array('Categoria_Id' => $id, 'Visible' => 1),$limit,$offset);
 		return $query->result();
 	}
 }

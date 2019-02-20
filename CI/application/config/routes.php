@@ -55,4 +55,12 @@ $route['translate_uri_dashes'] = FALSE;
 $route['categoria/(:num)'] = 'Mostrar_Productos/getProductosPorCategoria/$1';
 $route['producto/(:num)'] = 'Mostrar_Productos/getDetallesProducto/$1';
 
+//carrito
+//Añadir un objeto al carrito
+$route['carrito/(:num)/(:any)'] = 'Mostrar_Detalles/add/$1/$2';
+//Mostrar el carrito
+$route['carrito'] = 'Carrito/mostrar';
+
+
+
 

@@ -20,12 +20,14 @@
                 ?>
 
             <?php foreach($ci->model->getCategorias() as $categoria){ ?>
-                <a class="dropdown-item" href= <?=site_url('categoria/'.$categoria->Id)?> > <?= $categoria->Nombre;?></a>
+                <a class="dropdown-item" href= <?=site_url('Mostrar_Productos/getProductosPorCategoria/'.$categoria->Id)?> > <?= $categoria->Nombre;?></a>
             <?php } ?>      
         
             </div>
-
     </div>
+    <div id="carro"><a href=<?=site_url('login')?>><input type="button" class="btn btn-secundary" value="Login/Registro"></a></div>
+    <div id="carro"><a href=<?=site_url('carrito')?>><img class="card-img-top" id="carrito" src=<?=base_url('imagenes/carrito.png')?> alt=""></a></div>
+
 </nav>
 
 

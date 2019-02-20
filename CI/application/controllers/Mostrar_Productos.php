@@ -8,23 +8,42 @@ class Mostrar_Productos extends CI_Controller {
         $this->load->model("Productos");
     }
 
-	public function index()
+	public function index($offset=0)
 	{	
-		$this->load->view("destacados",[
-			'productos'=>$this->Productos->get_Productos_Destacados()
-		]);
+		$data = $this->Productos->get_Productos_Destacados();
+		$config['base_url']=site_url('Mostrar_Productos/index');
+		$config['per_page']=8;
+		$config['total_rows']=count($data);
+		
+		$this->pagination->initialize($config);
+		$page=$this->Productos->getPaginateDestacados($config['per_page'],$offset);
+
+		$pag=$this->load->view("destacados",[
+			'data'=>$page
+		],TRUE);
+
+		$this->load->view("template",[
+			'cuerpo'=>$pag]);
 	}
 
-	public function getProductosPorCategoria($id)
+	public function getProductosPorCategoria($id,$offset=0)
 	{	
-		$productos_categoria=$this->Productos->get_Productos_Por_Categorias($id);
+		$data=$this->Productos->get_Productos_Por_Categorias($id);
+		$config['base_url']=site_url('Mostrar_Productos/getProductosPorCategoria/'.$id);
+		$config['uri_segment'] =4;
+		$config['per_page']=8;
+		$config['total_rows']=count($data);
+		
+		$this->pagination->initialize($config);
+		$page=$this->Productos->getPaginatePorCategorias($id,$config['per_page'],$offset);
+	
+			$pag=$this->load->view("destacados",[
+				'data'=>$page
+			],TRUE);
 
-		if($productos_categoria)
-			$this->load->view("destacados",[
-				'productos'=>$this->Productos->get_Productos_Por_Categorias($id)
-			]);
-		else
-		$this->load->view("error");
+			$this->load->view("template",[
+				'cuerpo'=>$pag]);
+	
 	}
 
 	public function getDetallesProducto($id)
@@ -32,9 +51,11 @@ class Mostrar_Productos extends CI_Controller {
 		$productos_categoria=$this->Productos->getDetalles($id);
 
 	
-			$this->load->view("detalles",[
+			$pag=$this->load->view("detalles",[
 				'productos'=>$this->Productos->getDetalles($id)
-			]);
+			],TRUE);
 	
+			$this->load->view("template",[
+				'cuerpo'=>$pag]);
 	}
 }
