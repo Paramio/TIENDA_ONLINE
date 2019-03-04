@@ -7,6 +7,7 @@ class Registro_Model extends CI_Model {
         $this->load->database();
     }
     
+    /** Método encargado de añadir un usuario a la base de datos */
     function añadir_usuario($array){
         
       $this->db->insert('usuarios', $array);

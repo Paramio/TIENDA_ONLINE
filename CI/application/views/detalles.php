@@ -30,11 +30,11 @@
             <form action="<?php echo site_url("mostrar_detalles/add/".$detalles->Id);?>" method="post">
 
               <div class="form-group">
-                  <p>Cantidad: <input class="input" type="text" name="cantidad" placeholder="cantidad" value="<?= set_value("cantidad") ?>"></p>
+                  <p>Cantidad: <input class="input" type="text" name="cantidad" placeholder="cantidad" value="1"></p>
                   <?php echo form_error('cantidad'); ?>
               </div>
               <div class="form-group">
-                  <button class="input" type="submit" >Añadir al carro</button>
+                  <button class="input btn btn-secondary" type="submit" >Añadir al carro</button>
               </div>
             </form>
           </section>

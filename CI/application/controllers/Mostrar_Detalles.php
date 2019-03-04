@@ -56,6 +56,7 @@ class Mostrar_Detalles extends CI_Controller {
 				'price'   => $detalles[0]->Precio,
 				'name'    => $detalles[0]->Nombre,
 				'img'    => $detalles[0]->Imagen,
+				'stock' =>"",
 			);
 			$this->cart->insert($data);
 			   redirect('Mostrar_Productos');

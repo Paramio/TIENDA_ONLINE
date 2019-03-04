@@ -25,7 +25,27 @@
         
             </div>
     </div>
-    <div id="carro"><a href=<?=site_url('login')?>><input type="button" class="btn btn-secundary" value="Login/Registro"></a></div>
+
+    <?php 
+        $ci=get_instance();
+        $ci->load->model('Login_model');
+    ?>
+    <?php if ($ci->Login_model->esta_dentro()){
+
+        echo '<div class="nav-item dropdown">';
+        echo '<a id="tituloSelect" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+        echo 'Usuario';
+        echo  '</a>';
+        echo '<div id="login" class="dropdown-menu" aria-labelledby="navbarDropdown">'; 
+        echo "<button class='btn btn-secondary'><a class='nav-link' href='".site_url('Controlador_pedidos/mostrar_pedidos')."'>Pedidos</a></button>";
+        echo "<button class='btn btn-secondary'><a class='nav-link' href='".site_url('Modify_user/index')."'>Modificar Perfil</a></button>";
+        echo "<button class='btn btn-secondary'><a class='nav-link' href='".site_url('Login/cerrar_sesion')."'> Baja</a></button>";
+        echo '</div>';
+    }else{
+        echo "<a class='nav-link' href='".site_url('Login')."'>Iniciar sesión</a>";
+    }   
+    ?>
+   
     <div id="carro"><a href=<?=site_url('carrito')?>><img class="card-img-top" id="carrito" src=<?=base_url('imagenes/carrito.png')?> alt=""></a></div>
 
 </nav>

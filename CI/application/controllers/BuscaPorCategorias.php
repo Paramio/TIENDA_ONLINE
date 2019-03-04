@@ -8,6 +8,7 @@ class BuscaPorCategorias extends CI_Controller {
 		$this->load->model("MuestraPorCategoria");
     }
 
+	/** Método encargado de mostrar todos los productos de una categoría específica */
 	public function getProductos($id)
 	{	
 		$productos_categoria=$this->MuestraPorCategoria->getProductos($id);

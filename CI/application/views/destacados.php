@@ -1,10 +1,7 @@
 <!-- Page Content -->
 <div class="container">
 
-      <!-- Page Heading -->
-      <h1 class="my-4">Prueba
-        <small>Prueba pero en pequeñito</small>
-      </h1>
+  
 
   <div class="row">
     <?php foreach($data as $detalles){ ?>

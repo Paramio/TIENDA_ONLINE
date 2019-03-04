@@ -7,23 +7,31 @@ class Usuarios extends CI_Model {
 		$this->load->database(); 
 	}
 
-	// Método encargado de buscar en la base de datos todos los productos destacados.
-	public function login(){
-		$query = $this->db->get_where('usuarios', array('Nombre_Usuario' =>$nombre, 'Contraseña' => $contra));
+	/** Método encargado de obtener los datos de un usuario mediante su nombre de usuario*/
+    public function getData(){
+        
+        $query = $this->db->get_where('usuarios', array('Nombre_Usuario'=>$this->session->userdata("nombre_usuario")));
 		return $query->result();
     }
     
-    public function register(){
-        $data = array(
-            'title' => 'My title',
-            'name' => 'My Name',
-            'date' => 'My date'
-    );
-    
-    $this->db->insert('mytable', $data);
+    /** Método encargado de modificar los datos del usuario */
+    public function modify_user($data){
+        $query = $this->db
+        ->where('Nombre_Usuario', $this->session->userdata("nombre_usuario"))
+       ->update("usuarios", $data);
+        $newdata = array(
+              'nombre_usuario' => $array["nombre_usuario_registro"],
+              'pass' => $array["contraseña"],
+              'dentro' => TRUE
+          );
+          $this->session->set_userdata($newdata);
+
     }
 
-	
-
-	
+    /** método encargado de cancelar una cuenta de usuario */
+    public function cancel_user($data){
+        $query = $this->db
+        ->where('Nombre_Usuario', $this->session->userdata("nombre_usuario"))
+       ->update("usuarios", $data);
+    }
 }

@@ -18,13 +18,15 @@
                             </div>
                             
                             <div class="form-group">
-                                <button class="input" type="submit" >Iniciar sesion</button>
+                                <button class="input btn btn-success"" type="submit" >Iniciar sesion</button>
                             </div>
-                            </form>    
+
+                            </form>   
+                               <a href=<?=site_url('login/recuperarContra')?>>¿Has olvidado tu contraseña?</a>         
                        
                     </div>
                     <div class="col-sm-1 col-md-2">
-                        <h2 class="or">OR</h2>
+                        <h2 class="or">O</h2>
                     </div>
                     <div class="col-sm-12 col-md-4 col-md-offset-1">
                         
@@ -79,7 +81,7 @@
                                 <?php echo form_error('pass'); ?>
                             </div>
                            <div class="form-group">
-                                <button class="input" type="submit" >Registrarse</button>
+                                <button class="input btn btn-success"" type="submit" >Registrarse</button>
                             </div>
                             </form>
                        

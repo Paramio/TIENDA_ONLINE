@@ -5,17 +5,19 @@ class Carrito extends CI_Controller {
 
 	function __construct() {
         parent::__construct();
-        $this->load->model("Productos");
+		$this->load->model("Productos");
+		$this->load->model("Pedidos");
     }
 
-
+	/** Método encargado de mostrar el carrito */
 	public function mostrar(){
-
+		$stock=$this->Pedidos->compruebastock();
 		$pag=$this->load->view("carro",[],TRUE);
 		$this->load->view("template",[
 			'cuerpo'=>$pag]);
 	}
 	
+	/** Método encargado de eliminar un producto de un carrito */
 	public function eliminar($rowid){
 	
 		$data = array(
@@ -30,4 +32,8 @@ class Carrito extends CI_Controller {
 			'cuerpo'=>$pag]);
 	}
 	
+
+
+
+
 }

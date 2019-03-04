@@ -8,6 +8,7 @@ class Mostrar_Productos extends CI_Controller {
         $this->load->model("Productos");
     }
 
+	/* Funcion encargada de mostrar solo los productos destacados */
 	public function index($offset=0)
 	{	
 		$data = $this->Productos->get_Productos_Destacados();
@@ -26,6 +27,7 @@ class Mostrar_Productos extends CI_Controller {
 			'cuerpo'=>$pag]);
 	}
 
+	/* Funcion encargada de mostrar solo los productos de una categoría en específico */
 	public function getProductosPorCategoria($id,$offset=0)
 	{	
 		$data=$this->Productos->get_Productos_Por_Categorias($id);
@@ -46,6 +48,7 @@ class Mostrar_Productos extends CI_Controller {
 	
 	}
 
+	/* Funcion encargada de mostrar un producto en específico con todas sus características */
 	public function getDetallesProducto($id)
 	{	
 		$productos_categoria=$this->Productos->getDetalles($id);

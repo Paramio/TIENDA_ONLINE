@@ -7,7 +7,7 @@ class MuestraPorCategoria extends CI_Model {
 		$this->load->database(); 
 	}
 
-	// Método encargado de buscar en la base de datos todos los productos destacados.
+	/** Método encargado de buscar en la base de datos todos los productos destacados. */
 	public function getDetalles($id){
 		$query = $this->db->get_where('productos', array('Id' => $id));
 		return $query->result();	

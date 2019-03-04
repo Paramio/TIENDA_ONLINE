@@ -7,7 +7,8 @@ class Category_model extends CI_Model {
 		$this->load->database(); 
 	}
 
-	// Método encargado de buscar en la base de datos todas las categorias.
+	/**  Método encargado de buscar en la base de datos todas las categorias 
+	 * para crear el cual los clientes usaran para navegar entre las distintas categorias*/
 	public function getCategorias(){
 		$query = $this->db->query("SELECT * FROM categorias");
 		return $query->result();
