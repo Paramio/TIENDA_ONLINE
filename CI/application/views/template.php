@@ -36,6 +36,14 @@
 
     <!-- Footer -->
     <footer class="py-5 bg-dark">
+    <?php echo form_open('Mostrar_Productos/cambioMoneda'); ?>
+                    <select name="moneda" id="moneda" onchange="this.form.submit()">
+                    <option>Selecciona su divisa</option>
+                        <?php foreach($this->session->userdata('monedas') as $key => $value){ ?>
+                            <option value="<?= $key; ?>"><?= $key; ?></option>
+                        <?php } ?>
+                    </select>
+                    </form>
       <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
       </div>

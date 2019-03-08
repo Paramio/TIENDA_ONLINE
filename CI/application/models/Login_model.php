@@ -35,7 +35,8 @@ class Login_model extends CI_Model {
             'cp' => $query->Cp,
             'provincia' => $query->Provincia,
             'email' => $query->Email,
-            'dentro' => TRUE
+            'dentro' => TRUE,
+            'tipo' => $query->Tipo
         );
         $this->session->set_userdata($newdata);
     }

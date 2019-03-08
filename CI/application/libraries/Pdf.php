@@ -1,27 +1,33 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-
 /**
  * CodeIgniter PDF Library
  *
- * @package			CodeIgniter
- * @subpackage		Libraries
- * @category		Libraries
- * @author			Muhanz
- * @license			MIT License
- * @link			https://github.com/hanzzame/ci3-pdf-generator-library
+ * Generate PDF in CodeIgniter applications.
  *
+ * @package            CodeIgniter
+ * @subpackage        Libraries
+ * @category        Libraries
+ * @author            CodexWorld
+ * @license            https://www.codexworld.com/license/
+ * @link            https://www.codexworld.com/
  */
 
-require_once(dirname(__FILE__) . '/dompdf/autoload.inc.php');
+// reference the Dompdf namespace
 use Dompdf\Dompdf;
 
 class Pdf
 {
-	public function create($html,$filename)
-    {
-	    $dompdf = new Dompdf();
-	    $dompdf->loadHtml($html);
-	    $dompdf->render();
-	    $dompdf->stream($filename.'.pdf');
-  }
+    public function construct(){
+
+        // include autoloader
+        require_once dirname(FILE__).'/dompdf/autoload.inc.php';
+
+        // instantiate and use the dompdf class
+        $pdf = new DOMPDF();
+
+        $CI =& get_instance();
+        $CI->dompdf = $pdf;
+
+    }
 }
+?>

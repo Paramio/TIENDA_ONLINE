@@ -83,11 +83,12 @@ class Controlador_pedidos extends CI_Controller {
 			$pag=$this->load->view("pedido_detalles",[
 				'lineas'=>$lineas,
 			],TRUE);
-		    
 
-		$this->load->library('pdf'); // change to pdf_ssl for ssl
-        $filename = "Resumen pedido";
-       
-        $this->pdf->create($pag, $filename);
+
+			$mpdf = new \Mpdf\Mpdf();
+			//$mpdf->SetHeader();
+			$mpdf->WriteHTML($pag);
+			$mpdf->Output("Resumen.pdf","D");
+		
 		}
 }

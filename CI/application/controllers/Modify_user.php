@@ -24,6 +24,7 @@ class Modify_user extends CI_Controller {
 			 
 	}
 
+    /** Método encargado de comprobar el filtrado de la modificación de datos del usuario */
 	public function modify(){
 		$this->load->model("Registro_Model");
         $this->load->library('form_validation');
@@ -97,7 +98,9 @@ class Modify_user extends CI_Controller {
             $this->Login_model->cerrar_session();
             redirect("",'refresh');
         }
-	}
+    }
+    
+    /** Método encargado de dar de baja la cuenta del usuario*/
 	public function cancel_user(){
 		$data = array(
 			'Activo' => 1

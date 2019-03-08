@@ -149,7 +149,8 @@ class Login extends CI_Controller {
                 'Dni' => $this->input->post('dni'),
                 'Nombre_Usuario' => $this->input->post('nombre_usuario_registro'),
                 'Contraseña' => $this->input->post('pass'),
-                'Activo' => 0
+                'Activo' => 0,
+                'Tipo' => "client",
             );
         
             $this->login_model->añadir_usuario($data);

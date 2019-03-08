@@ -13,6 +13,20 @@ class Category_model extends CI_Model {
 		$query = $this->db->query("SELECT * FROM categorias");
 		return $query->result();
 	}
+
+	public function importarCategorias($data){
+		$result=$this->db->get_where('categorias', array('Id' => $data['Id']->__toString()))->row();
+      
+		if(!empty($result)){
+			 $this->db
+			->where('Id', $data['Id']->__toString())
+		   ->update("categorias", $data);
+		}else{
+			$this->db->insert('categorias', $data);
+		}
+		
+	}
+	
 	
 	
 }

@@ -20,7 +20,7 @@
      
                 <tr>
                     <td><img class="card-img-top" id="imgCarrito" src=<?=base_url('imagenes/'.$items['img'])?>><?= $items['name'];?></td>
-                    <td><?= $items['price'];?></td>
+                    <td><?= $items['price']." ".$this->session->userdata('current_divisa')?></td>
                     <td><?= $items['qty'];?></td>
                     <td><a href=<?=site_url('Carrito/eliminar/'.$items['rowid'])?>>Borrar</a></td>
                 </tr>
@@ -31,9 +31,11 @@
                 <tr>
                     <td colspan="2"> </td>
                     <td class="right"><strong>Total</strong></td>
-                    <td class="right">$<?php echo $this->cart->format_number($this->cart->total()); ?></td>
+                    <td class="right"><?php echo $this->cart->format_number($this->cart->total())." ".$this->session->userdata('current_divisa') ?></td>
+                    <button class="btn btn-primary"><a href="<?=site_url('Controlador_pedidos/mostrarResumen')?>">Tramitar pedido</a></button>
+                    <button class="btn btn-danger"><a href="<?=site_url('Carrito/vaciar_carrito')?>">Vaciar carrito</a></button>
                 </tr>
-                <button class="btn btn-primary"><a href="<?=site_url('Controlador_pedidos/mostrarResumen')?>">Tramitar pedido</a></button>
+                
                 
             
             </table>

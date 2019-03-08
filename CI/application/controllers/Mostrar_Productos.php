@@ -11,6 +11,9 @@ class Mostrar_Productos extends CI_Controller {
 	/* Funcion encargada de mostrar solo los productos destacados */
 	public function index($offset=0)
 	{	
+		$this->monedas();
+
+
 		$data = $this->Productos->get_Productos_Destacados();
 		$config['base_url']=site_url('Mostrar_Productos/index');
 		$config['per_page']=8;
@@ -61,4 +64,26 @@ class Mostrar_Productos extends CI_Controller {
 			$this->load->view("template",[
 				'cuerpo'=>$pag]);
 	}
+
+	public function  monedas(){
+        $xml = simplexml_load_file("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml");
+        $monedas['EUR']=1;
+        foreach ($xml->Cube->Cube->Cube as $c) {
+            $attr = $c->attributes();
+            //echo "Un euro equivale a ".$attr[1]." ".$attr[0]."<br>";
+            $monedas[(string)$attr[0]]=(double)$attr[1];
+
+        }
+
+        $this->session->set_userdata('monedas',$monedas);
+
+	}
+	
+	public function cambioMoneda(){
+        //$this->form_validation->set_rules('moneda', 'Moneda');
+        $this->input->post('moneda');
+        $this->session->set_userdata('current_divisa',$this->input->post('moneda'));
+        $this->session->userdata('monedas')[$this->session->userdata('current_divisa')];
+        redirect('Mostrar_Productos/index');
+    }
 }

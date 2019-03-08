@@ -13,7 +13,7 @@
                                 <?php echo form_error('nombre_usuario_login'); ?>
                             </div>
                             <div class="form-group">
-                                <input class="input" type="text" name="pass_inicio" placeholder="Contraseña" value="<?= set_value("pass_inicio") ?>">
+                                <input class="input" type="password" name="pass_inicio" placeholder="Contraseña" value="<?= set_value("pass_inicio") ?>">
                                 <?php echo form_error('pass_inicio'); ?>
                             </div>
                             
@@ -77,7 +77,7 @@
                                 <?php echo form_error('nombre_usuario_registro'); ?>
                             </div>
                             <div class="form-group">
-                                <input class="input" type="text" name="pass" placeholder="Contraseña" value="<?= set_value("pass") ?>">
+                                <input class="input" type="password" name="pass" placeholder="Contraseña" value="<?= set_value("pass") ?>">
                                 <?php echo form_error('pass'); ?>
                             </div>
                            <div class="form-group">

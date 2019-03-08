@@ -32,6 +32,13 @@ class Carrito extends CI_Controller {
 			'cuerpo'=>$pag]);
 	}
 	
+	public function vaciar_carrito(){
+		$this->cart->destroy();
+		$pag=$this->load->view("carro",[],TRUE);
+
+		$this->load->view("template",[
+			'cuerpo'=>$pag]);
+	}
 
 
 

@@ -36,14 +36,23 @@
         echo '<a id="tituloSelect" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
         echo 'Usuario';
         echo  '</a>';
-        echo '<div id="login" class="dropdown-menu" aria-labelledby="navbarDropdown">'; 
-        echo "<button class='btn btn-secondary'><a class='nav-link' href='".site_url('Controlador_pedidos/mostrar_pedidos')."'>Pedidos</a></button>";
-        echo "<button class='btn btn-secondary'><a class='nav-link' href='".site_url('Modify_user/index')."'>Modificar Perfil</a></button>";
-        echo "<button class='btn btn-secondary'><a class='nav-link' href='".site_url('Login/cerrar_sesion')."'> Baja</a></button>";
+        echo '<div id="login" style="left:-100px;" class="dropdown-menu" aria-labelledby="navbarDropdown">'; 
+       if ($this->session->userdata("tipo")=="admin"){
+        echo "<button style='width:100%;' class='btn btn-secondary'><a class='nav-link' href='".site_url('Grocery/muestra_Productos')."'>Crud de administradores</a></button>";
+        echo "<button style='width:100%;' class='btn btn-secondary'><a class='nav-link' href='".site_url('Importar/exportarCategorias')."'>Exportar categorias</a></button>";
+        echo "<button style='width:100%;' class='btn btn-secondary'><a class='nav-link' href='".site_url('Importar/exportarProductos')."'>Exportar Productos</a></button>";
+        echo "<button style='width:100%;' class='btn btn-secondary'><a class='nav-link' href='".site_url('Importar/vista_importar')."'>Importar categorias</a></button>";
+        echo "<button style='width:100%;' class='btn btn-secondary'><a class='nav-link' href='".site_url('Importar/vista_importar2')."'>Importar productos</a></button>";
+       } 
+        echo "<button style='width:100%;' class='btn btn-secondary'><a class='nav-link' href='".site_url('Controlador_pedidos/mostrar_pedidos')."'>Pedidos</a></button>";
+        echo "<button style='width:100%;' class='btn btn-secondary'><a class='nav-link' href='".site_url('Modify_user/index')."'>Modificar Perfil</a></button>";
+        echo "<button style='width:100%;' class='btn btn-secondary'><a class='nav-link' href='".site_url('Login/cerrar_sesion')."'> Baja</a></button>";
         echo '</div>';
+
+       
     }else{
-        echo "<a class='nav-link' href='".site_url('Login')."'>Iniciar sesión</a>";
-    }   
+         echo "<a class='nav-link' href='".site_url('Login')."'>Iniciar sesión</a>";
+    }  
     ?>
    
     <div id="carro"><a href=<?=site_url('carrito')?>><img class="card-img-top" id="carrito" src=<?=base_url('imagenes/carrito.png')?> alt=""></a></div>

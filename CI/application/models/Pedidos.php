@@ -57,10 +57,18 @@ class Pedidos extends CI_Model {
         $this->correo->initialize($configuraciones);
         $this->correo->from('practicasantonioparamio@gmail.com', 'Paramio');
         $this->correo->to($this->session->userdata("email"));
-        $cuerpo="Id Pedido:".$idpedido->Id.$this->load->view('terminarpedido',"",TRUE);
+        $cuerpo="Id Pedido:".$idpedido->Id.$this->load->view('plantilla_compra',"",TRUE);
         $this->correo->subject("Pedido");
-        //$this->correo->attach($html);
-        //$this->correo->_headers[ "Content-Transfer-Encoding:"] = "base64";
+    
+        $this->load->library('Pdf');
+      
+        $mpdf = new \Mpdf\Mpdf();
+        //$mpdf->SetHeader();
+        $mpdf->WriteHTML($cuerpo);
+        $mpdf->Output("Resumen.pdf");
+
+        $pdfFilePath = FCPATH . 'attach\pdfs'.$idpedido->Id.'.pdf';
+        $this->correo->attach('C:\Users\anton\Documents\Multiboot_Cache\Nueva_carpeta\htdocs\TIENDA_ONLINE\CI\application\assets\pdf'.$idpedido->Id.'.pdf', 'attachment', 'Factura'.$idpedido->Id.'.pdf');
         $this->correo->message($cuerpo);
         if($this->correo->send())
         {
@@ -92,14 +100,14 @@ class Pedidos extends CI_Model {
                     'stock' =>"No hay stock"
                 );
                 $this->cart->update($data);
-              return false;
+             
             }else{
                     $data = array(
                         'rowid'   => $item['rowid'],
                         'stock' =>"Hay stock"
                     );
                     $this->cart->update($data);
-                    return true;
+                   
                 }
               
 

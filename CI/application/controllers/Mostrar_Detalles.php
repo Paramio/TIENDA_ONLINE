@@ -21,7 +21,7 @@ class Mostrar_Detalles extends CI_Controller {
 				'cuerpo'=>$pag]);
 	}
 
-
+	/** Método encargado de añadir un producto al carrito */
 	public function add($id)
 	{	
 		$this->load->helper(array('form'));
@@ -32,7 +32,7 @@ class Mostrar_Detalles extends CI_Controller {
             array(
                 'field' => 'cantidad',
                 'label' => 'cantidad',
-                'rules' => 'required|numeric'
+                'rules' => 'required|greater_than_equal_to[1]|integer'
             )
         );
 
@@ -61,12 +61,6 @@ class Mostrar_Detalles extends CI_Controller {
 			$this->cart->insert($data);
 			   redirect('Mostrar_Productos');
 		   }
-
-
-
-	
-
-	
 
 	$pag=$this->load->view("detalles",[
 		'productos'=>$this->Productos->getDetalles($id)

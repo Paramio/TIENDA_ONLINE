@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Registro extends CI_Controller {
 
+    /** Filtrado del registro de usuario */
     public function index() {
         $this->load->model("Registro_Model");
         $this->load->library('form_validation');

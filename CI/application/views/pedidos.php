@@ -10,11 +10,11 @@
 </thead>
   <?php foreach($pedidos as $pedido){ ?>
   <tr>
-    <td><?=$pedido->Id;?></td>
-    <td><?=$pedido->Estado;?></td> 
-    <td><?=$pedido->Fecha;?></td>
+    <td><?=$pedido->Id?></td>
+    <td><?=$pedido->Estado?></td> 
+    <td><?=$pedido->Fecha?></td>
     
-    <td><button class="btn btn-success"><a class='nav-link' href='<?=site_url('Controlador_pedidos/ver_detalles/'.$pedido->Id)?>'>Ver detalles</a></button><?php if($pedido->Estado=='P')echo "<button class='btn btn-danger'><a class='nav-link' href=".site_url('Controlador_pedidos/anular_pedido/'.$pedido->Id).">Anular pedido</a></button></td>"?>;
+    <td><button class="btn btn-success"><a class='nav-link' href='<?=site_url('Controlador_pedidos/ver_detalles/'.$pedido->Id)?>'>Ver detalles</a></button><?php if($pedido->Estado=='P')echo "<button class='btn btn-danger'><a class='nav-link' href=".site_url('Controlador_pedidos/anular_pedido/'.$pedido->Id).">Anular pedido</a></button></td>"?>
     <td><button class='btn btn-danger'><a class='nav-link' href="<?=site_url('Controlador_pedidos/crear_pdf/'.$pedido->Id)?>">Descargar pdf</a></button></td>
 
 </tr>
